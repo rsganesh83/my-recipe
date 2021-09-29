@@ -8,15 +8,19 @@ text = 'hello world'
 def text_counter_using_collection(input_text):
     res = defaultdict(list)
 
+    # sort the alphabets, store it in dict
     for key, val in sorted(dict(Counter(list(input_text.replace(' ', ''))).most_common()).items()):
         res[val].append(key)
 
+    # sort the key (occurrences) in descending order
     result = OrderedDict(sorted(res.items(), key=lambda t: t[0], reverse=True))
 
+    # append sorted chars
     res_set = list()
     for k, v in result.items():
         res_set += v
 
+    # top 5
     print(''.join(res_set)[0:5])
 
 
